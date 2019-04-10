@@ -14,6 +14,19 @@ public class Param {
         this.paramMap = paramMap;
     }
     
+    public Integer getInteger(String name) {
+        if (StringUtils.isBlank(name)) {
+            return null;
+        }
+        
+        Object obj = paramMap.get(name);
+        
+        if (obj != null) {
+            return Integer.valueOf(String.valueOf(obj));
+        }
+        return null;
+    }
+    
     public Long getLong(String name) {
         if (StringUtils.isBlank(name)) {
             return null;

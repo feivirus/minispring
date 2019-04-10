@@ -37,7 +37,7 @@ public class DispatcherServlet extends HttpServlet{
         Handler handler = ControllerHelper.getHandler(requestMethod, requestPath);
         
         if (handler != null) {
-            Class<?> controllerClass = handler.getClass();
+            Class<?> controllerClass = handler.getControllerClass();
             Object controllerBean = BeanHelper.getBean(controllerClass);
             Map<String, Object> parameterMap = new HashMap<String, Object>();            
             Enumeration<String> paramNames = req.getParameterNames();

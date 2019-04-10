@@ -6,12 +6,12 @@ import lombok.Data;
 
 @Data
 public class Handler {
-    private Class<?> clazz;
+    private Class<?> controllerClass;
     
     private Method method;
     
     public Handler(Class<?> clazz, Method method) {
-        this.clazz = clazz;
+        this.controllerClass = clazz;
         
         this.method = method;
     }

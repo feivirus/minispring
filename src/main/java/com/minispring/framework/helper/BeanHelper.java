@@ -27,8 +27,12 @@ public class BeanHelper {
         if (!BEAN_MAP.containsKey(clazz)) {
             return null;
         }
-        return (T)ReflectionUtil.newInstance(clazz);
-        
+        Object bean = BEAN_MAP.get(clazz);
+        if (bean == null) {
+            return (T)ReflectionUtil.newInstance(clazz);
+        } else {
+            return (T)bean;
+        }       
     }
     
     public void setBean(Class<?> clazz, Object bean) {
