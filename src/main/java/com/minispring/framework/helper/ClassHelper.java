@@ -1,5 +1,6 @@
 package com.minispring.framework.helper;
 
+import java.lang.annotation.Annotation;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,6 +14,28 @@ public final class ClassHelper {
     static {
         String appPackage = ConfigHelper.getAppBasePackage();
         CLASS_SET = ClassUtil.getClassSet(appPackage);
+    }
+    
+    public static Set<Class<?>> getClassSetBySuper(Class<?> superClazz) {
+        Set<Class<?>> childSet = new HashSet<>();
+        
+        for(Class<?> clazz : CLASS_SET) {
+            if (superClazz.isAssignableFrom(clazz)) {
+                childSet.add(clazz);
+            }
+        }
+        return childSet;
+    }
+    
+    public static Set<Class<?>> getClassSetByAnnotation(Class<? extends Annotation> annotationClass) {
+        Set<Class<?>> classSet = new HashSet<>();
+        
+        for(Class<?> clazz : CLASS_SET) {
+            if (clazz.isAnnotationPresent(annotationClass)) {
+                classSet.add(clazz);
+            }
+        }
+        return classSet;
     }
     
     public static Set<Class<?>> getServiceClassSet() {

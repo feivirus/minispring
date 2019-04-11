@@ -35,7 +35,7 @@ public class BeanHelper {
         }       
     }
     
-    public void setBean(Class<?> clazz, Object bean) {
+    public static void setBean(Class<?> clazz, Object bean) {
         BEAN_MAP.put(clazz, bean);
     }
     
